@@ -5,30 +5,13 @@
 {% block content %}
     <h1 class="text-center mb-4">Наша команда</h1>
     <div class="row">
-        <!-- Блоки с программистами -->
-        <div class="col-md-3 text-center">
-            <img src="{% static 'main/img/programmer1.jpg' %}" alt="Программист 1" class="img-fluid rounded-circle mb-3" />
-            <h3>Иван Иванов</h3>
-            <p>Frontend-разработчик</p>
-            <a href="#" class="btn btn-primary">Подробнее</a>
-        </div>
-        <div class="col-md-3 text-center">
-            <img src="{% static 'main/img/programmer2.jpg' %}" alt="Программист 2" class="img-fluid rounded-circle mb-3" />
-            <h3>Мария Петрова</h3>
-            <p>Backend-разработчик</p>
-            <a href="#" class="btn btn-primary">Подробнее</a>
-        </div>
-        <div class="col-md-3 text-center">
-            <img src="{% static 'main/img/programmer3.jpg' %}" alt="Программист 3" class="img-fluid rounded-circle mb-3" />
-            <h3>Алексей Смирнов</h3>
-            <p>Fullstack-разработчик</p>
-            <a href="#" class="btn btn-primary">Подробнее</a>
-        </div>
-        <div class="col-md-3 text-center">
-            <img src="{% static 'main/img/programmer4.jpg' %}" alt="Программист 4" class="img-fluid rounded-circle mb-3" />
-            <h3>Елена Кузнецова</h3>
-            <p>UI/UX дизайнер</p>
-            <a href="#" class="btn btn-primary">Подробнее</a>
-        </div>
+        {% for member in team_members %}
+            <div class="col-md-3 text-center">
+                <img src="{{ member.photo.url }}" alt="{{ member.first_name }} {{ member.last_name }}" class="img-fluid rounded-circle mb-3" />
+                <h3>{{ member.first_name }} {{ member.last_name }}</h3>
+                <p>{{ member.position }}</p>
+                <a href="{% url 'team_member_detail' member.id %}" class="btn btn-primary">Подробнее</a>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

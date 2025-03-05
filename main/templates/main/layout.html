@@ -18,6 +18,7 @@
 
     <!-- Подключение пользовательских стилей -->
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}" />
+
 </head>
 <body>
     <!-- Header -->
@@ -37,7 +38,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{% url 'contact' %}">
                             <i class="fa-solid fa-address-book"></i> Контакты
                         </a>
                     </li>
